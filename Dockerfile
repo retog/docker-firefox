@@ -1,7 +1,9 @@
 FROM ubuntu:14.10
 # Based on http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/, by Fabio Rehm "fgrehm@gmail.com"
 
-RUN apt-get update && apt-get install -y firefox
+
+RUN apt-get update && apt-get install -y firefox software-properties-common 
+RUN apt-add-repository multiverse && apt-get update && apt-get install -y flashplugin-installer
 
 RUN sed 's/main$/main universe/' -i /etc/apt/sources.list && \
     apt-get update && apt-get install -y software-properties-common && \
